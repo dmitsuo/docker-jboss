@@ -13,7 +13,7 @@ ENV JBOSS_LOG_DIR ${JBOSS_HOME}/standalone/log
 RUN set -x ; \
     mkdir -p $JBOSS_HOME ; \
     cd $JBOSS_HOME ; \
-    curl -O $JBOSS_DOWNLOAD_URL ; \
+    curl -o $JBOSS_DOWN_FILE $JBOSS_DOWNLOAD_URL ; \
     tar -xvf $JBOSS_DOWN_FILE --strip-components=1 ; \
     rm -rf bin/*.bat ; \
     rm -rf bin/*.ps1 ; \
