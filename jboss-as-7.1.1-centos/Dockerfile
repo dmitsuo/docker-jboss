@@ -8,6 +8,7 @@ ENV JBOSS_BASE_DOWNLOAD_URL https://www.dropbox.com/s/jm98r1u7dktz7yu
 ENV JBOSS_DOWNLOAD_URL ${JBOSS_BASE_DOWNLOAD_URL}/${JBOSS_DOWN_FILE}?dl=1
 ENV JBOSS_DEPLOY_DIR ${JBOSS_HOME}/standalone/deployments
 ENV JBOSS_CONFIG_DIR ${JBOSS_HOME}/standalone/configuration
+ENV JBOSS_LOG_DIR ${JBOSS_HOME}/standalone/log
 
 RUN set -x ; \
     mkdir -p $JBOSS_HOME ; \
