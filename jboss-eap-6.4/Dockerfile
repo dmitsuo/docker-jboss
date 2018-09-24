@@ -1,7 +1,7 @@
 FROM davimss/docker-jdk:8
 
 ENV JBOSS_VERSION jboss-eap-6.4-CVE-2015-7501
-ENV JBOSS_HOME /opt/$JBOSS_VERSION
+ENV JBOSS_HOME /opt/jboss-eap-6.4
 ENV PATH $JBOSS_HOME/bin:$PATH
 ENV JBOSS_DOWN_FILE $JBOSS_VERSION.zip
 ENV JBOSS_BASE_DOWNLOAD_URL https://www.dropbox.com/s/zmv8och1s78ibmp
