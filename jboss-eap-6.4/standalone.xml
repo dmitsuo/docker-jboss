@@ -25,6 +25,11 @@
         <extension module="org.jboss.as.webservices"/>
         <extension module="org.jboss.as.weld"/>
     </extensions>
+    
+    <system-properties>
+        <property name="org.apache.coyote.http11.Http11Protocol.SERVER" value="Microsoft-IIS/10.0"/>
+    </system-properties>
+
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
@@ -292,7 +297,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:web:2.2" default-virtual-server="default-host" native="false">
             <connector name="http" protocol="HTTP/1.1" scheme="http" socket-binding="http"/>
-            <virtual-server name="default-host" enable-welcome-root="true">
+            <virtual-server name="default-host" enable-welcome-root="false">
                 <alias name="localhost"/>
                 <alias name="example.com"/>
             </virtual-server>
