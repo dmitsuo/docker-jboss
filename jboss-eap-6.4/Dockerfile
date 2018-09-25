@@ -1,23 +1,23 @@
 FROM davimss/docker-jdk:8
 
 ENV JBOSS_VERSION jboss-eap-6.4-CVE-2015-7501
-ENV JBOSS_HOME /opt/jboss-eap-6.4
+ENV JBOSS_HOME /opt/$JBOSS_VERSION
 ENV PATH $JBOSS_HOME/bin:$PATH
-ENV JBOSS_DOWN_FILE $JBOSS_VERSION.zip
-ENV JBOSS_BASE_DOWNLOAD_URL https://www.dropbox.com/s/zmv8och1s78ibmp
+ENV JBOSS_DOWN_FILE $JBOSS_VERSION.tar.gz
+ENV JBOSS_BASE_DOWNLOAD_URL https://www.dropbox.com/s/m677rvo09wyti12
 ENV JBOSS_DOWNLOAD_URL ${JBOSS_BASE_DOWNLOAD_URL}/${JBOSS_DOWN_FILE}?dl=1
 ENV JBOSS_DEPLOY_DIR ${JBOSS_HOME}/standalone/deployments
 ENV JBOSS_CONFIG_DIR ${JBOSS_HOME}/standalone/configuration
 ENV JBOSS_LOG_DIR ${JBOSS_HOME}/standalone/log
 
-RUN set -x ; \        
-    curl -o /opt/$JBOSS_DOWN_FILE -L $JBOSS_DOWNLOAD_URL ; \
-    cd /opt ; \
-    unzip /opt/$JBOSS_DOWN_FILE ; \
-    cd ${JBOSS_HOME} ; \
+RUN set -x ; \
+    mkdir -p $JBOSS_HOME ; \
+    cd $JBOSS_HOME ; \
+    curl -o $JBOSS_HOME/$JBOSS_DOWN_FILE -L $JBOSS_DOWNLOAD_URL ; \
+    tar -xvf $JBOSS_DOWN_FILE --strip-components=1 ; \
     rm -rf bin/*.bat ; \
     rm -rf bin/*.ps1 ; \
-    rm -rf /opt/$JBOSS_DOWN_FILE ; \
+    rm -rf $JBOSS_DOWN_FILE ; \
     echo -e "\nJAVA_OPTS=\"\$JAVA_OPTS -Duser.language=pt -Duser.country=BR -Duser.timezone=America/Belem\"" >> $JBOSS_HOME/bin/standalone.conf ; \
     ln -s $JBOSS_HOME /opt/jboss
 
