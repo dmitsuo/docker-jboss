@@ -1,4 +1,4 @@
-FROM davimss/docker-jdk:8
+FROM davimss/docker-jdk:7
 
 ENV JBOSS_VERSION jboss-as-7.1.1.Final
 ENV JBOSS_HOME /opt/$JBOSS_VERSION
